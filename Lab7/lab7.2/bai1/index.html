@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sản phẩm</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 35px;
+        background: #f5f5f5;
+        color: #222;
+      }
+
+      /* Tiêu đề */
+      h2 {
+        font-size: 28px;
+        margin: 0 0 28px;
+        color: #111;
+        border-left: 5px solid #d4a017;
+        padding-left: 14px;
+      }
+
+      /* Form sản phẩm */
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        padding: 24px;
+        margin-bottom: 30px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      }
+
+      input {
+        flex: 1;
+        min-width: 180px;
+        padding: 12px 14px;
+        margin: 0;
+        border: 1px solid #ddd;
+        border-radius: 7px;
+        outline: none;
+        font-size: 14px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      input:focus {
+        border-color: #d4a017;
+        box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.15);
+      }
+
+      /* Nút chức năng */
+      button {
+        padding: 11px 18px;
+        border: none;
+        cursor: pointer;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: 0.2s;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+      }
+
+      .add {
+        background: #d4a017;
+        color: #111;
+      }
+
+      /* Bảng sản phẩm */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      }
+
+      thead {
+        background: #171717;
+        color: #fff;
+      }
+
+      th,
+      td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+      }
+
+      th {
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      tbody tr {
+        transition: background 0.2s;
+      }
+
+      tbody tr:hover {
+        background: #fff9e9;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Nút sửa và xóa */
+      .edit {
+        background: #ffc107;
+        color: #222;
+        margin-right: 5px;
+      }
+
+      .delete {
+        background: #dc3545;
+        color: #fff;
+      }
+
+      /* Điện thoại và máy tính bảng */
+      @media (max-width: 768px) {
+        body {
+          padding: 18px;
+        }
+
+        h2 {
+          font-size: 23px;
+        }
+
+        form {
+          padding: 16px;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        input {
+          width: 100%;
+          min-width: 0;
+        }
+
+        form button {
+          width: 100%;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+
+        th,
+        td {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Quản lý sản phẩm</h2>
+
+    <form id="productForm">
+      <input type="hidden" id="id" />
+
+      <input type="text" id="name" placeholder="Tên sản phẩm" required />
+
+      <input
+        type="number"
+        id="price"
+        placeholder="Giá sản phẩm"
+        min="0"
+        required
+      />
+
+      <input
+        type="number"
+        id="quantity"
+        placeholder="Số lượng"
+        min="0"
+        required
+      />
+
+      <button type="submit" class="add" id="submitBtn">Thêm sản phẩm</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Chức năng</th>
+        </tr>
+      </thead>
+
+      <tbody id="productList"></tbody>
+    </table>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
